@@ -1,22 +1,38 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import Header from "../components/Header";
 import MyContainer from "../components/MyContainer";
 import LatestNews from "../components/LatestNews";
 import NavBar from "../components/NavBar";
 import CategoryList from "../components/CategoryList";
 import { Outlet, useNavigation } from "react-router";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Slider from "../components/Slider";
 
 const categoryPromise = fetch("/categories.json").then((res) => res.json());
 
 const HomeLayout = () => {
   const navigate = useNavigation();
   // console.log(navigate);
+
+
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      offset: 100,
+      easing: "ease-in-out",
+      once: false, // 🔥 animate every time when scrolling
+      mirror: true, // ✅ re-animate on scroll up
+    });
+  }, []);
+
   return (
     <MyContainer>
       <header>
         <Header></Header>
         <LatestNews></LatestNews>
         <NavBar></NavBar>
+        <Slider></Slider>
       </header>
 
       <main className="grid grid-cols-12 gap-3">

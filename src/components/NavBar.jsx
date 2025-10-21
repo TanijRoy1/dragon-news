@@ -1,7 +1,8 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import userImg from "../assets/user.png";
 import AuthContext from '../Context/AuthContext';
+import 'animate.css';
 
 const NavBar = () => {
     const {user, signOutUser} = use(AuthContext);
@@ -12,10 +13,11 @@ const NavBar = () => {
             console.log(error);
          })
     }
-
+const [play, setPlay] = useState(false);
     return (
         <div className='flex items-center justify-between my-5'>
-            <div className='font-semibold text-blue-500 text-lg'>{user && user.displayName}</div>
+            <button onClick={() => setPlay(true)}>Play</button>
+            <div className={`font-semibold text-blue-500 text-lg ${play && "animate__animated animate__swing"}`}>{user && user.displayName}</div>
             <div className='flex gap-3 text-accent'>
                 <NavLink to={`/`} className={`MyNavLink hover:text-black text-lg border-b-2 border-white`}>Home</NavLink>
                 <NavLink to={`/about`} className={`MyNavLink hover:text-black text-lg border-b-2 border-white`}>About</NavLink>

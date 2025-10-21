@@ -14,7 +14,9 @@ const NewsCard = ({ news }) => {
   } = news;
 
   return (
-    <div className="card bg-base-100 shadow-md border border-gray-400 rounded-2xl overflow-hidden">
+    <div data-aos="zoom-in-up"
+      data-aos-duration="800"
+      data-aos-once="false" className="card bg-base-100 shadow-md border border-gray-400 rounded-2xl overflow-hidden">
       {/* Author & Actions */}
       <div className="flex items-center justify-between px-4 py-3 bg-base-200">
         <div className="flex items-center gap-3">

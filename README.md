@@ -35,3 +35,11 @@ const navigate = useNavigation();
                            </div>,
 },
 ```
+## Remove from Git history
+```js
+git rm --cached src/firebase/firebase.config.js
+
+git commit -m "Remove sensitive Firebase config file"
+
+git push
+```
